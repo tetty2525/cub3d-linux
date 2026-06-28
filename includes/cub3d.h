@@ -6,7 +6,7 @@
 /*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 17:01:56 by htate             #+#    #+#             */
-/*   Updated: 2026/06/28 17:02:12 by htate            ###   ########.fr       */
+/*   Updated: 2026/06/28 18:22:10 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,8 @@ typedef struct s_player_ray
 	double					step_x;
 	double					step_y;
 	double					perp_wall_dist;
+	double					raw_wall_dist;
+	double					angle_diff;
 	int						line_height;
 	int						start_y;
 	int						end_y;

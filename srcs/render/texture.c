@@ -6,7 +6,7 @@
 /*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 17:01:56 by htate             #+#    #+#             */
-/*   Updated: 2026/06/28 17:44:08 by htate            ###   ########.fr       */
+/*   Updated: 2026/06/28 18:22:10 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static void	calc_texture_pixel_pos(t_tex_calc *tex_calc,
 	tex_calc->step = 1.0 * texture_img[texture_dir].height
 		/ player_ray.line_height;
 	if (player_ray.side == 0)
-		wall_x = (player->pos.y) + player_ray.perp_wall_dist
+		wall_x = (player->pos.y) + player_ray.raw_wall_dist
 			* (player_ray.raydir_y);
 	else
-		wall_x = (player->pos.x) + player_ray.perp_wall_dist
+		wall_x = (player->pos.x) + player_ray.raw_wall_dist
 			* (player_ray.raydir_x);
 	wall_x -= floor((wall_x));
 	tex_calc->tex_x = (int)(wall_x * (double)texture_img[texture_dir].width);

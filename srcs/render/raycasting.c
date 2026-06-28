@@ -6,7 +6,7 @@
 /*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 17:01:56 by htate             #+#    #+#             */
-/*   Updated: 2026/06/28 17:02:12 by htate            ###   ########.fr       */
+/*   Updated: 2026/06/28 18:22:10 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	init_player_ray(t_player_ray *player_ray, int map_x, int map_y,
 	player = get_player();
 	player_ray->raydir_x = cos(start_x);
 	player_ray->raydir_y = sin(start_x);
+	player_ray->angle_diff = start_x - player->angle;
 	init_delta_dist(player_ray);
 	init_player_dist_step(player_ray, map_x, map_y, player);
 }
@@ -100,11 +101,13 @@ void	calc_player_ray(t_player_ray *player_ray, int map_x, int map_y)
 	data = get_t_data();
 	check_wall_hit_ray(data, player_ray, map_x, map_y);
 	if (player_ray->side == 0)
-		player_ray->perp_wall_dist = player_ray->dist_x
+		player_ray->raw_wall_dist = player_ray->dist_x
 			- (player_ray->delta_dist_x);
 	else
-		player_ray->perp_wall_dist = player_ray->dist_y
+		player_ray->raw_wall_dist = player_ray->dist_y
 			- (player_ray->delta_dist_y);
+	player_ray->perp_wall_dist = player_ray->raw_wall_dist
+		* cos(player_ray->angle_diff);
 	player_ray->line_height = (int)(HEIGHT / player_ray->perp_wall_dist) * 2;
 	player_ray->start_y = -(player_ray->line_height / 2) + (HEIGHT / 2);
 	if (player_ray->start_y < 0)
