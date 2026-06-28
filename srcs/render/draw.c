@@ -6,7 +6,7 @@
 /*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 17:01:56 by htate             #+#    #+#             */
-/*   Updated: 2026/06/28 17:02:12 by htate            ###   ########.fr       */
+/*   Updated: 2026/06/28 17:43:29 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	draw(void)
 	int			i;
 
 	player = get_player();
-	/* FIX: fov/2 で左右対称に。元は - M_PI/6 で非対称だった */
 	start = player->angle - player->fov / 2;
 	i = 0;
 	while (i < WIDTH)

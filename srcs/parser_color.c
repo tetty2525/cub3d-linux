@@ -6,7 +6,7 @@
 /*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 17:01:56 by htate             #+#    #+#             */
-/*   Updated: 2026/06/28 17:02:12 by htate            ###   ########.fr       */
+/*   Updated: 2026/06/28 17:42:00 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	set_color(t_config *config, char **color_array, int color_place)
 		}
 		if (config->floor.color[i] == ATOI_ERROR
 			|| config->ceil.color[i] == ATOI_ERROR)
-		{	
+		{
 			wp_free(&color_array);
 			print_error("color range is from 0 to 255,only digit");
 			return (0);
@@ -97,7 +97,8 @@ int	validation_color(t_config *config, char *line)
 		config->ceil.appear = true;
 	}
 	else
-		return (wp_free(&color_array), print_error("identifier is duplicate"), 0);
+		return (wp_free(&color_array),
+			print_error("identifier is duplicate"), 0);
 	wp_free(&color_array);
 	return (1);
 }

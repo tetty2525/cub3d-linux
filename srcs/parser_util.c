@@ -6,7 +6,7 @@
 /*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 17:01:56 by htate             #+#    #+#             */
-/*   Updated: 2026/06/28 17:02:12 by htate            ###   ########.fr       */
+/*   Updated: 2026/06/28 17:42:41 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_trim_white(const char *str)
 	end = ft_strlen(str) - 1;
 	while (str[start]
 		&& (str[start] == ' ' || str[start] == '\n' || str[start] == '\t'))
-			start++;
+		start++;
 	while (end > start
 		&& (str[end] == ' ' || str[end] == '\n' || str[end] == '\t'))
 		end--;
@@ -46,7 +46,7 @@ int	color_atoi(char *color_code)
 	result = 0;
 	i = 0;
 	while (str[i])
-	{	
+	{
 		result = result * 10 + (str[i++] - '0');
 		if (result > 255)
 		{
