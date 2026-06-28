@@ -16,6 +16,8 @@ int	is_emptyline(char *line)
 {
 	int	i;
 
+	if (!line)
+		return (1);
 	i = 0;
 	if (line[0] == '\n' || line[0] == '\t')
 		return (1);

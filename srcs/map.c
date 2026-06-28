@@ -6,7 +6,7 @@
 /*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 17:01:56 by htate             #+#    #+#             */
-/*   Updated: 2026/06/28 17:02:12 by htate            ###   ########.fr       */
+/*   Updated: 2026/06/28 19:09:45 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,13 @@ int	check_map_start(t_config *config, char **map, int i)
 
 void	validation_map(t_config *config, t_map *config_file, int i)
 {
-	while (is_emptyline(config_file->mapinfo[i]))
+	while (config_file->mapinfo[i] && is_emptyline(config_file->mapinfo[i]))
 		i++;
+	if (!config_file->mapinfo[i])
+	{
+		print_error("Map information missing");
+		free_exit(config, config_file);
+	}
 	config_file->map_h = i;
 	if (check_map_emptyline(config_file->mapinfo, i)
 		|| check_map_char(config_file->mapinfo, i) || check_map_start(config,
