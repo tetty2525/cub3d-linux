@@ -2,7 +2,7 @@ NAME    = cub3D
 CC      = cc
 CFLAGS  = -Wall -Wextra -Werror -O2
 
-MLX_DIR     = ./minilibx/minilibx-linux
+MLX_DIR     = ./minilibx-linux
 LIB_DIR     = ./Libft
 GNL_DIR     = ./get_next_line
 
@@ -58,9 +58,11 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
+	$(MAKE) -C $(LIB_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C $(LIB_DIR) fclean
 
 re: fclean all
 

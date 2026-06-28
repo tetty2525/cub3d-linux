@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hauchida <hauchida@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 11:08:23 by hauchida          #+#    #+#             */
-/*   Updated: 2025/02/01 06:19:19 by hauchida         ###   ########.fr       */
+/*   Created: 2026/06/28 17:01:56 by htate             #+#    #+#             */
+/*   Updated: 2026/06/28 17:22:55 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	init_player(int map_x, int map_y, char p_direction)
 	t_player	*player;
 
 	player = get_player();
-	/* fov = M_PI/3 (60°) を full FOV として draw() で fov/2 ずつ両側に展開 */
 	player->fov = M_PI / 3;
 	if (p_direction == 'N')
 		player->angle = 3 * M_PI / 2;
@@ -43,7 +42,6 @@ static void	init_player(int map_x, int map_y, char p_direction)
 		player->angle = M_PI / 2;
 	else
 		player->angle = 0;
-	/* FIX: debug printf を削除 */
 	player->pos.x = (double)map_x - 0.5;
 	player->pos.y = (double)map_y - 0.5;
 }
@@ -88,13 +86,12 @@ void	init_t_data(void)
 	if (!data->win)
 		free_exit((*config), NULL);
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	/* FIX: mlx_new_image の戻り値チェックを追加 */
 	if (!data->img.img)
 		free_exit((*config), NULL);
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bits_per_pixel,
 			&data->img.line_length, &data->img.endian);
 	mlx_hook(data->win, CROSS_BUTTON, 0, close_window, data);
-	mlx_hook(data->win, ON_KEYDOWN, ON_KEYDOWN, key_event, data);
+	mlx_hook(data->win, 2, 1L << 0, key_event, data);
 	mlx_loop_hook(data->mlx, render, data);
 	init_config_to_data(*config);
 	init_texture(*config);
