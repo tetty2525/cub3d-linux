@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soaoki <soaoki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: htate <htate@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 20:22:04 by soaoki            #+#    #+#             */
-/*   Updated: 2025/01/31 20:22:07 by soaoki           ###   ########.fr       */
+/*   Updated: 2026/06/28 16:54:13 by htate            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	color_atoi(char *color_code)
 	while (str[i])
 	{	
 		result = result * 10 + (str[i++] - '0');
-		if (0 > result || result > 255)
+		if (result > 255)
 		{
 			free(str);
 			return (ATOI_ERROR);
